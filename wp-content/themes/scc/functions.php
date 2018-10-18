@@ -1,4 +1,15 @@
 <?php
+if ( !defined( 'LIBS_PATH' ) ) {
+  define( 'LIBS_PATH', WP_CONTENT_DIR . '/just-libs' );
+}
+
+define( 'USE_MODULES', true );
+
+require_once LIBS_PATH . '/wp-remove-defaults.php';
+require_once LIBS_PATH . '/wp-textdomain.php';
+
+just_remove_unused();
+just_load_theme_textdomain( 'scc' );
 
 function scc_edit_default_scripts( $scripts ) {
   if ( !is_admin() ) {
@@ -6,40 +17,72 @@ function scc_edit_default_scripts( $scripts ) {
   }
 }
 
-function scc_enqueue_scripts_before() {
-  wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js' );
-  wp_enqueue_style( 'normalize', 'https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css' );
-}
-
 function scc_enqueue_scripts() {
-  $scripts_dir = 'js';
-  $styles_dir = 'css';
+  wp_enqueue_script(
+    'polyfill',
+    'https://cdn.polyfill.io/v2/polyfill.min.js?features=default'
+  );
 
-  $theme_path = get_template_directory();
-  $theme_url = get_template_directory_uri();
+  $tdu = get_template_directory_uri();
+  $tdp = get_template_directory();
+  $template = _get_current_template();
 
-  $current_theme_template = _get_current_template();
+  $enqueue = function( $name, $path, $type = 'script', $deps = null ) use ( $tdu, $tdp ) {
+    if ( !USE_MODULES && $type === 'script' ) {
+      if ( substr( $name, 0, 2 ) === 'm_' ) {
+        return;
+      }
 
-  wp_enqueue_style( 'style', get_stylesheet_uri() );
-  $script_path = "$scripts_dir/$current_theme_template.js";
-  $style_path = "$styles_dir/$current_theme_template.css";
+      wp_enqueue_script( $name, "$tdu/$path", $deps );
+    }
 
-  if ( file_exists( "$theme_path/$script_path" ) ) {
-    wp_enqueue_script( $current_theme_template, "$theme_url/$script_path", array() );
-  } elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG && !is_dir( "$theme_path/$scripts_dir" ) ) {
-    echo "Unable to find the scripts directory.<br>";
-  }
+    $version = filemtime( "$tdp/$path" );
+    call_user_func( "wp_enqueue_$type", $name, "$tdu/$path", $deps, $version );
+  };
 
-  if ( file_exists( "$theme_path/$style_path" ) ) {
-    wp_enqueue_style( $current_theme_template, "$theme_url/$style_path" );
-  } elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG && !is_dir( "$theme_path/$styles_dir" ) ) {
-    echo "Unable to find the styles directory.<br>";
-  }
+  $enqueue( 'm_index', 'src/index.js' );
+  $enqueue( 'l_index', 'legacy/legacy-index.js' );
+  $enqueue( 's_index', 'css/index.css', 'style' );
+
+  // if ( function_exists( 'gutenberg_parse_blocks' ) ) {
+  //   $content = get_post_field( 'post_content', get_the_ID() );
+  //   $blocks = gutenberg_parse_blocks( $content );
+  //   $should_enqueue_swiper = false;
+
+  //   foreach ( $blocks as $block ) {
+  //     if ( !is_object( $block ) ) {
+  //       continue;
+  //     }
+
+  //     switch ( $block->blockName ) {
+  //       default:
+  //         break;
+  //     }
+  //   }
+  // }
 }
 
 add_filter( 'wp_default_scripts', 'scc_edit_default_scripts' );
-add_action( 'wp_enqueue_scripts', 'scc_enqueue_scripts_before' );
 add_action( 'wp_enqueue_scripts', 'scc_enqueue_scripts' );
+
+if ( USE_MODULES ) {
+  function scc_script_loader_tag( $tag, $handle, $src ) {
+    if ( substr( $handle, 0, 2 ) === 'm_' ) {
+      $tag = "<script type=\"module\" src=\"$src\"></script>";
+    } elseif ( substr( $handle, 0, 2 ) === 'l_' ) {
+      $tag = "<script type=\"text/javascript\" src=\"$src\" nomodule></script>";
+    }
+
+    return $tag;
+  }
+
+  add_filter( 'script_loader_tag', 'scc_script_loader_tag', 10, 3 );
+}
+
+// function scc_add_brand_search_shortcode() {
+//   return scc_read_partial( 'brand-search-form' );
+// }
+// add_shortcode( 'ricerca_brand', 'scc_add_brand_search_shortcode' );
 
 function _record_template( $template ) {
   $GLOBALS['current_theme_template'] = basename( $template, '.php' );

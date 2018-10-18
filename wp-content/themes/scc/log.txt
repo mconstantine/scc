@@ -1,3 +1,5 @@
 2018/10/18 17:51:31 /Applications/MAMP/htdocs/scc/wp-content/themes/scc
 2018/10/18 17:59:43 /Applications/MAMP/htdocs/scc/wp-content/themes/scc
 2018/10/18 17:59:56 /Applications/MAMP/htdocs/scc/wp-content/themes/scc
+2018/10/18 18:15:01 /Applications/MAMP/htdocs/scc/wp-content/themes/scc
+2018/10/18 18:19:50 /Applications/MAMP/htdocs/scc/wp-content/themes/scc
