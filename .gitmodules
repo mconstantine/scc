@@ -1,0 +1,3 @@
+[submodule "wp-content/just-libs"]
+	path = wp-content/just-libs
+	url = https://mauroconstantinescu@bitbucket.org/alquimiawrg/just-libs.git

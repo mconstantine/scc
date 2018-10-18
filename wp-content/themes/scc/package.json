@@ -1,0 +1,41 @@
+{
+  "name": "scc",
+  "version": "1.0.0",
+  "description": "Sasso Carta Codice's website. Not really an npm package.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "cd src && each './legacy-*.js' -- rollup %p --config ../rollup.config.js --file $PWD/../legacy/%f",
+    "build:sass": "node-sass-chokidar ./scss -o ./css --output-style compressed & postcss ./css/*.css --use autoprefixer --no-map --replace",
+    "build": "run-p build:*",
+    "dev:livereload": "browser-sync start -p http://localhost/ --port 8000 --no-open -f *.php partials/*.php partials/**/*.php css/*.css src/*.js src/**/*.js fonts/**/*.* static/*.*",
+    "dev:sass": "node-sass-chokidar ./scss -o ./css --watch --skip-initial --source-map-embed",
+    "predev": "echo `date '+%Y/%m/%d %H:%M:%S'` $PWD >> log.txt",
+    "dev": "run-p dev:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mconstantine/scc.git"
+  },
+  "author": "Mauro Constantinescu <mconst@mconst.it>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/alquimiawrg/moc#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-external-helpers": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "autoprefixer": "^8.5.1",
+    "babel-upgrade": "0.0.23",
+    "browser-sync": "^2.24.5",
+    "cli-foreachfile": "^1.0.5",
+    "node-sass-chokidar": "^1.3.0",
+    "npm-run-all": "^4.1.3",
+    "postcss": "^6.0.22",
+    "postcss-cli": "^5.0.0",
+    "rollup": "^0.66.6",
+    "rollup-plugin-babel": "^4.0.1",
+    "rollup-plugin-uglify": "^4.0.0",
+    "smoothscroll-polyfill": "^0.4.3"
+  }
+}
