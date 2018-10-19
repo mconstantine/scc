@@ -1,0 +1,72 @@
+.menu-icon {
+  appearance: none;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+
+  .icon {
+    position: relative;
+    display: block;
+    width: 32px;
+    height: 48px;
+
+    span {
+      display: block;
+      position: absolute;
+      top: 23px;
+      left: 0;
+      width: 32px;
+      height: 2px;
+      color: transparent;
+
+      &::before, &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+      }
+    }
+  }
+
+  &.open .icon {
+    span {
+      background-color: #fff;
+    }
+
+    span::before {
+      top: -6px;
+    }
+
+    span::after {
+      top: 6px;
+    }
+  }
+
+  &.close .icon {
+    span::before, span::after {
+      background-color: #fff;
+    }
+
+    span::before {
+      transform: rotate(45deg);
+    }
+
+    span::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .label {
+    font-family: 'Akkurat', sans-serif;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-left: 16px;
+  }
+}

@@ -1,3 +1,6 @@
-.scc-header + * {
+@import './cover';
+@import './menu/index';
+
+.scc-menu + * {
   @include smoothstep('margin-top', 48px, 320px, 100px, 1440px);
 }

@@ -1,0 +1,19 @@
+.scc-menu-bar {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $grey-900;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: 5vw;
+
+  @include media(1333px) {
+    padding-left: calc(50vw - 600px);
+  }
+}
+
+@import './icon';
+@import './menu';

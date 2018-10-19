@@ -11,4 +11,28 @@
     <?php wp_head(); ?>
   </head>
   <body>
-    <header class="scc-header"></header>
+    <?php the_post(); ?>
+    <div class="scc-cover">
+      <h1><?php the_title(); ?></h1>
+      <?php if ( is_front_page() ): ?>
+        <h2><?= get_bloginfo( 'description' ); ?></h2>
+      <?php endif; ?>
+    </div>
+    <div class="scc-menu-bar">
+      <button class="menu-icon open">
+        <span class="icon"><span></span></span>
+        <span class="label">Menu</span>
+      </button>
+    </div>
+    <div class="scc-menu">
+      <button class="menu-icon close">
+        <div class="icon"><span></span></div>
+        <div class="label"><?php _e( 'Close', 'scc' ); ?></div>
+      </button>
+      <?php
+        wp_nav_menu( array(
+          'menu' => 'menu_main',
+          'container' => 'nav'
+        ) );
+      ?>
+    </div>

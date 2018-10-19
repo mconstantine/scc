@@ -2,8 +2,8 @@
   .content {
     padding-left: 5vw;
 
-    @include media(1200px) {
-      padding-left: 60px;
+    @include media(1333px) {
+      padding-left: calc(50vw - 600px);
     }
   }
 }

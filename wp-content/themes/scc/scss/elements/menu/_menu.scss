@@ -1,0 +1,35 @@
+.scc-menu {
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background-color: $grey-900;
+  color: #fff;
+  padding-left: 5vw;
+
+  > .menu-icon, a {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .menu {
+    font-family: 'Akkurat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
