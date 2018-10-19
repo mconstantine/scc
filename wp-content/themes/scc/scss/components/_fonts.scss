@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "Akkurat";
+  src: url("../fonts/Akkurat-Regular.woff2") format("woff2"),
+       url("../fonts/Akkurat-Regular.woff") format("woff"),
+       url("../fonts/Akkurat-Regular.ttf") format("truetype"),
+       url("../fonts/Akkurat-Regular.otf") format("opentype");
+
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("../fonts/Akkurat-Bold.woff2") format("woff2"),
+       url("../fonts/Akkurat-Bold.woff") format("woff"),
+       url("../fonts/Akkurat-Bold.ttf") format("truetype"),
+       url("../fonts/Akkurat-Bold.otf") format("opentype");
+
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("../fonts/Akkurat-Italic.woff2") format("woff2"),
+       url("../fonts/Akkurat-Italic.woff") format("woff"),
+       url("../fonts/Akkurat-Italic.ttf") format("truetype"),
+       url("../fonts/Akkurat-Italic.otf") format("opentype");
+
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Akkurat";
+  src: url("../fonts/Akkurat-BoldItalic.woff2") format("woff2"),
+       url("../fonts/Akkurat-BoldItalic.woff") format("woff"),
+       url("../fonts/Akkurat-BoldItalic.ttf") format("truetype"),
+       url("../fonts/Akkurat-BoldItalic.otf") format("opentype");
+
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../fonts/PlayfairDisplay-Regular.woff2") format("woff2"),
+       url("../fonts/PlayfairDisplay-Regular.woff") format("woff"),
+       url("../fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../fonts/PlayfairDisplay-Bold.woff2") format("woff2"),
+       url("../fonts/PlayfairDisplay-Bold.woff") format("woff"),
+       url("../fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../fonts/PlayfairDisplay-Italic.woff2") format("woff2"),
+       url("../fonts/PlayfairDisplay-Italic.woff") format("woff"),
+       url("../fonts/PlayfairDisplay-Italic.ttf") format("truetype");
+
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../fonts/PlayfairDisplay-BoldItalic.woff2") format("woff2"),
+       url("../fonts/PlayfairDisplay-BoldItalic.woff") format("woff"),
+       url("../fonts/PlayfairDisplay-BoldItalic.ttf") format("truetype");
+
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "RobotoSlab";
+  src: url("../fonts/RobotoSlab-Regular.woff2") format("woff2"),
+       url("../fonts/RobotoSlab-Regular.woff") format("woff"),
+       url("../fonts/RobotoSlab-Regular.ttf") format("truetype");
+
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "RobotoSlab";
+  src: url("../fonts/RobotoSlab-Bold.woff2") format("woff2"),
+       url("../fonts/RobotoSlab-Bold.woff") format("woff"),
+       url("../fonts/RobotoSlab-Bold.ttf") format("truetype");
+
+  font-style: normal;
+  font-weight: 700;
+}

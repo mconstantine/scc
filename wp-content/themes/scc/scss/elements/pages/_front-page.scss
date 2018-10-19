@@ -1,0 +1,9 @@
+.scc-front-page {
+  .content {
+    padding-left: 5vw;
+
+    @include media(1200px) {
+      padding-left: 60px;
+    }
+  }
+}
