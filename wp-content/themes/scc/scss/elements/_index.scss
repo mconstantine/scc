@@ -13,7 +13,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Akkurat', sans-serif;
   font-weight: normal;
-  line-height: 1;
+  line-height: 1.2;
   @include smoothstep('margin-top', 48px, 320px, 60px, 1440px);
   margin-bottom: 0;
   max-width: 960px;
