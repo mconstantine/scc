@@ -65,6 +65,25 @@ function scc_enqueue_scripts() {
 add_filter( 'wp_default_scripts', 'scc_edit_default_scripts' );
 add_action( 'wp_enqueue_scripts', 'scc_enqueue_scripts' );
 
+function scc_get_categories_links( $post_id = null ) {
+  $categories = array();
+  $terms = get_the_terms( $post_id, 'category' );
+
+  if ( !empty( $terms ) ) {
+    foreach ( $terms as $term ) {
+      $link = get_term_link( $term, 'category' );
+
+      if ( !is_wp_error( $link ) ) {
+        $categories[] = "<a href=\"$link\">{$term->name}</a>";
+      }
+    }
+
+    return $categories;
+  }
+
+  return false;
+}
+
 if ( USE_MODULES ) {
   function scc_script_loader_tag( $tag, $handle, $src ) {
     if ( substr( $handle, 0, 2 ) === 'm_' ) {

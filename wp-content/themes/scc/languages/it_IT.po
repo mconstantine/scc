@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SCC\n"
-"POT-Creation-Date: 2018-10-18 18:11+0200\n"
-"PO-Revision-Date: 2018-10-18 18:11+0200\n"
+"POT-Creation-Date: 2018-10-22 15:53+0200\n"
+"PO-Revision-Date: 2018-10-22 15:53+0200\n"
 "Last-Translator: Mauro Constantinescu <mauro.constantinescu@gmail."
 "com>\n"
 "Language-Team: Alquimia WRG <alquimiawrg@gmail.com>\n"
@@ -18,3 +18,29 @@ msgstr ""
 "_n:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: front-page.php:9
+msgid "Latest Posts"
+msgstr "Ultimi articoli"
+
+#: front-page.php:35 single-post.php:38
+msgid "Read"
+msgstr "Leggi"
+
+#: header.php:33
+msgid "Close"
+msgstr "Chiudi"
+
+#: single-post.php:11
+#, php-format
+msgid "Published on %s by %s"
+msgstr "Pubblicato il %s da %s"
+
+#: single-post.php:15
+#, php-format
+msgid "Categories: %s"
+msgstr "Categorie: %s"
+
+#: single-post.php:24
+msgid "Next Post"
+msgstr "Prossimo articolo"

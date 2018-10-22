@@ -35,11 +35,6 @@
         margin-top: 24px;
       }
     }
-
-    > div a {
-      color: $amber-500;
-      text-decoration: none;
-    }
   }
 
   @include media(960px) {

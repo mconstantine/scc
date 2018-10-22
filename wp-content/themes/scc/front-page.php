@@ -10,7 +10,7 @@
     <?php
       $latest_posts = new WP_Query( array(
         'post_type' => 'post',
-        'order_by' => 'date',
+        'orderby' => 'date',
         'posts_per_page' => 3
       ) );
     ?>
@@ -19,18 +19,9 @@
       <?php while ( $latest_posts->have_posts() ): $latest_posts->the_post(); ?>
         <div>
           <?php
-            $categories = array();
-            $terms = get_the_terms( get_the_ID(), 'category' );
+            $categories = scc_get_categories_links( get_the_ID() );
 
-            if ( !empty( $terms ) ) {
-              foreach ( $terms as $term ) {
-                $link = get_term_link( $term, 'category' );
-
-                if ( !is_wp_error( $link ) ) {
-                  $categories[] = "<a href=\"$link\">{$term->name}</a>";
-                }
-              }
-
+            if ( $categories ) {
               $categories = ' &ndash; ' . implode( ', ', $categories );
             } else {
               $categories = '';
