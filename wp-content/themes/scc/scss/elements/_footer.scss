@@ -1,0 +1,20 @@
+.scc-footer {
+  @include smoothstep('padding-top', 48px, 320px, 100px, 1440px);
+  @include smoothstep('padding-bottom', 48px, 320px, 100px, 1440px);
+
+  background-color: $grey-900;
+  color: #fff;
+
+  > * {
+    width: 90vw;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      @include smoothstep('margin-right', 36px, 320px, 80px, 1440px);
+    }
+  }
+}

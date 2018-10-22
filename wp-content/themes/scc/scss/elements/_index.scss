@@ -97,8 +97,14 @@ button, input {
 
 a {
   color: inherit;
+  transition: opacity 250ms ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @import './header';
 @import './buttons';
 @import './pages/index';
+@import './footer';
