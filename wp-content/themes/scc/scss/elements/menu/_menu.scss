@@ -1,14 +1,6 @@
 .scc-menu {
-  z-index: 11;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
   background-color: $grey-900;
   color: #fff;
-  padding-left: 5vw;
 
   > .menu-icon, a {
     min-height: 60px;
@@ -16,10 +8,37 @@
     align-items: center;
   }
 
+  > .menu-icon {
+    display: none;
+  }
+
+  .menu-container {
+    width: 90vw;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    max-width: 100%;
+  }
+
+  li {
+    > a {
+      color: inherit;
+      transition: color 250ms ease;
+    }
+
+    &.current-menu-item > a {
+      color: $amber-500;
+    }
+
+    &:hover > a {
+      color: $amber-200;
+    }
   }
 
   a {
@@ -32,4 +51,95 @@
     text-transform: uppercase;
     letter-spacing: 2px;
   }
+
+  ul ul {
+    padding-left: 18px;
+
+    li:not(:last-child) {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0; bottom: 0; left: 0;
+        height: 1px;
+        background-color: $grey-50;
+        transition: background-color 250ms ease;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0; bottom: 0; left: 48px;
+        height: 1px;
+        background-color: $grey-900;
+        transform-origin: 100% 0;
+        transform: scale(1, 1);
+        transition: transform 250ms ease;
+      }
+
+      &:hover::before {
+        background-color: $amber-200;
+      }
+
+      &:hover::after {
+        transform: scale(0, 1);
+      }
+    }
+  }
+}
+
+.js-enabled .scc-menu {
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 360px;
+  padding-left: 5vw;
+  transition: transform 500ms ease;
+  transform: translate3d(-100%, 0, 0);
+
+  @include media(1333px) {
+    padding-left: 60px;
+  }
+
+  .menu-container {
+    position: absolute;
+    top: 60px; right: 0; left: 5vw; bottom: 0;
+    margin: 0;
+    max-width: 360px;
+    overflow: auto;
+
+    @include media(1333px) {
+      left: 60px;
+    }
+  }
+
+  > .menu-icon {
+    display: flex;
+  }
+}
+
+.js-enabled .scc-menu-dim {
+  z-index: 10;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba($grey-900, .8);
+  transition: opacity 500ms ease, visibility 500ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu-opened .scc-menu {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-opened .scc-menu-dim {
+  transition: opacity 500ms ease;
+  opacity: 1;
+  visibility: visible;
 }

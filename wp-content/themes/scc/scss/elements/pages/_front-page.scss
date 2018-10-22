@@ -1,9 +1,11 @@
 .scc-front-page {
   .content {
     padding-left: 5vw;
+    padding-right: 5vw;
 
     @include media(1333px) {
       padding-left: calc(50vw - 600px);
+      padding-right: calc(50vw - 600px);
     }
   }
 }

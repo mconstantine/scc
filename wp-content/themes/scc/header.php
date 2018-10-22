@@ -13,26 +13,30 @@
   <body>
     <?php the_post(); ?>
     <div class="scc-cover">
-      <h1><?php the_title(); ?></h1>
       <?php if ( is_front_page() ): ?>
+        <h1><?= get_bloginfo( 'title' ); ?></h1>
         <h2><?= get_bloginfo( 'description' ); ?></h2>
+      <?php else: ?>
+        <h1><?php the_title(); ?></h1>
       <?php endif; ?>
     </div>
     <div class="scc-menu-bar">
-      <button class="menu-icon open">
+      <button id="scc-menu-icon-open" class="menu-icon open">
         <span class="icon"><span></span></span>
         <span class="label">Menu</span>
       </button>
     </div>
-    <div class="scc-menu">
+    <div id="scc-menu-dim" class="scc-menu-dim"></div>
+    <div id="scc-menu" class="scc-menu">
       <button class="menu-icon close">
-        <div class="icon"><span></span></div>
+        <div id="scc-menu-icon-close" class="icon"><span></span></div>
         <div class="label"><?php _e( 'Close', 'scc' ); ?></div>
       </button>
       <?php
         wp_nav_menu( array(
           'menu' => 'menu_main',
-          'container' => 'nav'
+          'container' => 'nav',
+          'container_class' => 'menu-container'
         ) );
       ?>
     </div>

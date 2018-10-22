@@ -1,5 +1,10 @@
 .scc-menu-bar {
+  display: none;
+}
+
+.js-enabled .scc-menu-bar {
   z-index: 10;
+  display: block;
   position: sticky;
   top: 0;
   left: 0;
@@ -9,9 +14,11 @@
   display: flex;
   align-items: center;
   padding-left: 5vw;
+  padding-right: 5vw;
 
   @include media(1333px) {
     padding-left: calc(50vw - 600px);
+    padding-right: calc(50vw - 600px);
   }
 }
 
