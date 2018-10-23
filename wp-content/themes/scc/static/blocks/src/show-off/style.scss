@@ -1,0 +1,38 @@
+.wp-block-moc-show-off {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    flex-basis: calc(50% - 8px);
+    min-width: 282px;
+  }
+
+  .data {
+    @media all and (min-width: 580px) {
+      margin-left: 16px;
+    }
+  }
+
+  .data > *:last-child {
+    margin-top: 1em;
+  }
+
+  .data-block {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5em;
+  }
+
+  .data-block-image {
+    width: 48px;
+  }
+
+  .data-block-description {
+    margin-left: 1em;
+  }
+
+  button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

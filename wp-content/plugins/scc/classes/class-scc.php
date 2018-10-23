@@ -16,6 +16,20 @@ class Scc {
   }
 
   function init() {
+    if ( function_exists( 'register_block_type' ) ) {
+      wp_enqueue_script(
+        'scc-blocks',
+        plugins_url( 'blocks/dist/blocks.build.js', __DIR__ ),
+        array( 'wp-blocks', 'wp-element' )
+      );
+
+      wp_enqueue_style(
+        'scc-blocks',
+        plugins_url( 'blocks/dist/blocks.style.build.css', __DIR__ ),
+        array( 'wp-blocks' )
+      );
+    }
+
     if ( function_exists( 'acf_add_options_page' ) ) {
       acf_add_options_page( array(
         'page_title' => __( 'Options', 'scc' ),

@@ -16,7 +16,6 @@ wp-content/themes/scc/legacy/
 wp-content/plugins/*
 !wp-content/plugins/scc/
 wp-content/plugins/scc/blocks/dist/
-wp-content/plugins/scc/import/data.csv
 
 node_modules/
 .DS_Store

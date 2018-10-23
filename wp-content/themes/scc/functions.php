@@ -44,22 +44,29 @@ function scc_enqueue_scripts() {
   $enqueue( 'l_index', 'legacy/legacy-index.js' );
   $enqueue( 's_index', 'css/index.css', 'style' );
 
-  // if ( function_exists( 'gutenberg_parse_blocks' ) ) {
-  //   $content = get_post_field( 'post_content', get_the_ID() );
-  //   $blocks = gutenberg_parse_blocks( $content );
-  //   $should_enqueue_swiper = false;
+  if ( function_exists( 'gutenberg_parse_blocks' ) ) {
+    $content = get_post_field( 'post_content', get_the_ID() );
+    $blocks = gutenberg_parse_blocks( $content );
 
-  //   foreach ( $blocks as $block ) {
-  //     if ( !is_object( $block ) ) {
-  //       continue;
-  //     }
+    foreach ( $blocks as $block ) {
+      if ( !is_array( $block ) ) {
+        continue;
+      }
 
-  //     switch ( $block->blockName ) {
-  //       default:
-  //         break;
-  //     }
-  //   }
-  // }
+      switch ( $block['blockName'] ) {
+        case 'core/code':
+          wp_enqueue_script(
+            's_prism',
+            get_template_directory_uri() . '/static/prism.js',
+            null, null, true
+          );
+          wp_enqueue_style( 's_prism', get_template_directory_uri() . '/static/prism.css' );
+          break;
+        default:
+          break;
+      }
+    }
+  }
 }
 
 add_filter( 'wp_default_scripts', 'scc_edit_default_scripts' );

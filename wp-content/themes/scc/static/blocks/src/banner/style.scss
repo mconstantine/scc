@@ -1,0 +1,16 @@
+.wp-block-moc-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  > * {
+    flex-basis: calc(50% - 16px);
+    min-width: 266px;
+  }
+
+  > *:last-child {
+    @media all and (min-width: 580px) {
+      margin-left: 32px;
+    }
+  }
+}
